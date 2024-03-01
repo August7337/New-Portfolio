@@ -8,52 +8,25 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <link href="/css/hello.css" rel="stylesheet">
+        <link href="/css/color.css" rel="stylesheet">
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
     </head>
-    <body class="antialiased bg-gray-100 ">
-        
-        <div class="hero">
-            <h1>My Portfolio</h1>
-            <h2>just a dev</h2>
-        </div>
-        <div class="MyProjects">
-            <h2>My Projects</h2>
-
-            <div class="section">
-
-                <div class="card">
-                    <h3>Title</h3>
-                    <p>Descrition</p>
-                </div>
-
-                <div class="card">
-                    <h3>Title</h3>
-                    <p>Descrition</p>
-                </div>
-
-                <div class="card">
-                    <h3>Title</h3>
-                    <p>Descrition</p>
-                </div>
-
-                <div class="card">
-                    <h3>Title</h3>
-                    <p>Descrition</p>
-                </div>
-
+    <body>
+        <nav class="Header">
+            <div class="header-wrapper">
+                <ul class="ul">
+                    <li class="header-btn"><a href="#">website</a></li>
+                    <li class="header-btn"><a href="#">branding</a></li>
+                    <li class="header-btn"><a href="#">marketing</a></li>
+                    <li class="header-btn"><a href="#">work</a></li>
+                    <li class="header-btn"><a href="#">us</a></li>
+                </ul>
             </div>
-        </div>
-        <div class="footer">
-            <a href="/login">login</a>
-        </div>
-        
+        </nav>
+        <img src="/Assets/Rightarrow.svg" alt="">
     </body>
 </html>
