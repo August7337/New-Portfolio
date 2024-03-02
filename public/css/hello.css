@@ -1,11 +1,3 @@
-:root{
-    --salmon: #F5A091;
-    --lightblue: #A8DAF4;
-    --lightgreen: #B2DECA;
-    --lightyellow: #FBFDD2;
-    --lightpurple: #ABAEDB;
-}
-
 *{
     margin: 0;
 }
@@ -75,4 +67,10 @@ a{
             }
         }
     }
+}
+
+.drag{
+    width: 150px;
+    height: 150px;
+    background-color: brown;
 }

@@ -7,13 +7,18 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <link href="/css/hello.css" rel="stylesheet">
-        <link href="/css/color.css" rel="stylesheet">
+        <link href="/css/colors.css" rel="stylesheet">
 
+        
+
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
         <nav class="Header">
@@ -27,6 +32,6 @@
                 </ul>
             </div>
         </nav>
-        <img src="/Assets/Rightarrow.svg" alt="">
+        <div class="drag"></div>
     </body>
 </html>
