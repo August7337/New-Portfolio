@@ -1,0 +1,4 @@
+Add the first admin :
+vendor/bin/sail mysql
+USE sg;
+INSERT INTO users (name, email, password) VALUES ('admin', 'SUPER@admin', '$2y$10$xbgid/MlCaA2k2HjstCuxOPvNawcClTmnUr/9UbSZVcD.F1v9N262');
