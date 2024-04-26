@@ -21,20 +21,17 @@
 
         @if ($posts->isNotEmpty())
             @foreach ($posts as $post)
-
-            @if ($post->image != "")
-                 <img class="w-40 h-40 sm:w-80 sm:h-80 object-cover	mr-10" width="320" height="320" src="{{asset('uploads/img/'.$post->image)}}" alt="{{ $post->title }} image" loading="lazy">
-             @endif
-            <div>
-                <h4 class="text-white text-4xl font-bold opacity-80 mb-4">{{ $post->title }}</h4>
-                <p class="text-white text-sm sm:text-xl opacity-75">{{ $post->description }}</p>
-            </div>
-            
-            
-            <p >{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y') }}</p>
-                    
-                
-            @endforeach
+                <div class="bg-slate-300 w-96 mb-9">
+                    @if ($post->image != "")
+                         <img class="w-40 h-40 sm:w-80 sm:h-80 object-cover	mr-10" width="320" height="320" src="{{asset('uploads/img/'.$post->image)}}" alt="{{ $post->title }} image" loading="lazy">
+                     @endif
+                    <div>
+                        <h4 class="text-white text-4xl font-bold opacity-80 mb-4">{{ $post->title }}</h4>
+                        <p class="text-white text-sm sm:text-xl opacity-75">{{ $post->description }}</p>
+                    </div>
+                    <p >{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y') }}</p>
+                </div>
+            @endforeach 
         @endif
             
         </div>
