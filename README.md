@@ -12,7 +12,6 @@ to do:
 
 db :
 - Title
-- Description
 - Date (txt)
 - Html
-- Images
+- Thumbnail
