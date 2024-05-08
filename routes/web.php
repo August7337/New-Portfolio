@@ -30,4 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 
+Route::get('editor', [EditorController::class, 'index']);
+Route::post('store', [EditorController::class, 'store']);
+
 require __DIR__.'/auth.php';
