@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\EditorController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 
@@ -30,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 
-Route::get('editor', [EditorController::class, 'index']);
-Route::post('store', [EditorController::class, 'store']);
+Route::get('/editor', [EditorController::class, 'index']);
+Route::post('/store', [EditorController::class, 'store']);
 
 require __DIR__.'/auth.php';
