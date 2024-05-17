@@ -11,7 +11,15 @@ password : admin
 to do:
 
 db :
-- Title
-- Date (txt)
-- Html
-- Thumbnail
+    post:
+        - id
+        - Title
+        - Date (txt)
+        - Html
+        - Thumbnail
+
+    img:
+        - id
+        - img data
+        - path
+        - post assigned (id)

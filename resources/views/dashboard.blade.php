@@ -1,3 +1,22 @@
+<style>
+    .ck-editor__editable_inline {
+        min-height: 300px;
+        color: black;
+    }
+    .ck-editor__editable_inline img {
+        max-height: 250px;
+        width: auto;
+    }
+    .ck-editor__editable_inline h2 {
+        font-size: 35px;
+    }
+    .ck-editor__editable_inline h3 {
+        font-size: 30px;
+    }
+    .ck-editor__editable_inline h4 {
+        font-size: 25px;
+    }
+</style>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -15,6 +34,12 @@
                     </div>
                     @endif
                     <h3 class="mb-4 text-xl">Create a post</h3>
+
+                    <form action="{{ url('store') }}" method="post">
+                        @csrf
+                        <textarea name="editor" id="editor"></textarea>
+                        <button class="rounded-lg bg-slate-900 w-full h-12 text-white mb-20 mt-8" type="submit">Submit</button>
+                    </form>
 
                     <form enctype="multipart/form-data" action="{{ route('posts.store') }}" method="post">
                         @csrf
@@ -124,6 +149,18 @@
                 document.getElementById("delete-post-from-"+id).submit();
             }
         }
+    </script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ),{
+                ckfinder: {
+                    uploadUrl: '{{route('upload').'?_token='.csrf_token()}}',
+                }
+            })
+            .catch( error => {
+                  
+            } );
     </script>
 </x-app-layout>
 
