@@ -18,6 +18,13 @@ class PostController extends Controller
         ]);
     }
 
+    public function show($id) {
+        $post = Post::findOrFail($id);
+        return view('posts.post', [
+            'post' => $post
+        ]);
+    }
+
     // This method will store a post in the data-base
     public function store(Request $request) {
         $rules = [

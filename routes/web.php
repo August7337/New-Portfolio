@@ -34,4 +34,6 @@ Route::middleware('auth')->group(function () {
 Route::post('/store', [EditorController::class, 'store']);
 Route::post('/editor/image_upload', [EditorController::class, 'upload'])->name('upload');
 
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
 require __DIR__.'/auth.php';
