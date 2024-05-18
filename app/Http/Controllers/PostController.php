@@ -24,8 +24,8 @@ class PostController extends Controller
             'title' => 'required|min:3'
         ];
 
-        if ($request->image != "") {
-            $rules['image'] = 'image';
+        if ($request->thumbnail != "") {
+            $rules['thumbnail'] = 'image';
         }
 
         $validator = Validator::make($request->all(), $rules);
@@ -37,22 +37,22 @@ class PostController extends Controller
         // Here we will insert post in db
         $post = new Post();
         $post->title = $request->title;
-        $post->description = $request->description;
+        $post->date = $request->date;
+        $post->html = $request->input('editor');
         $post->save();
 
         // if an img is upload :
-        if ($request->image != "") {
+        if ($request->thumbnail != "") {
 
-            // Here we will store image
-            $image = $request->image;
-            $ext = $image->getClientOriginalExtension();
-            $imageName = time().'.'.$ext;
+            // Here we will store thumbnail
+            $thumbnail = $request->thumbnail;
+            $thumbnailName = 'thu'.'-'.time().'-'.$thumbnail->getClientOriginalName();
 
             // Save img to the directory
-            $image->move(public_path('uploads/img'), $imageName);
+            $thumbnail->move(public_path('uploads/img'), $thumbnailName);
 
-            // Save image name in the db
-            $post->image = $imageName;
+            // Save thumbnail name in the db
+            $post->thumbnail = $thumbnailName;
             $post->save();
         }
         return redirect('/dashboard')->with('success', 'Post added successfully');
@@ -73,8 +73,8 @@ class PostController extends Controller
             'title' => 'required|min:3'
         ];
 
-        if ($request->image != "") {
-            $rules['image'] = 'image';
+        if ($request->thumbnail != "") {
+            $rules['thumbnail'] = 'image';
         }
 
         $validator = Validator::make($request->all(), $rules);
@@ -85,24 +85,24 @@ class PostController extends Controller
 
         // Here we will update post in db
         $post->title = $request->title;
-        $post->description = $request->description;
+        $post->date = $request->date;
+        $post->html = $request->input('editor');
         $post->save();
 
         // if an img is upload :
-        if ($request->image != "") {
-            // delete old image
-            File::delete(public_path('uploads/img/'.$post->image));
+        if ($request->thumbnail != "") {
+            // delete old thumbnail
+            File::delete(public_path('uploads/img/'.$post->thumbnail));
 
-            // Here we will store image
-            $image = $request->image;
-            $ext = $image->getClientOriginalExtension();
-            $imageName = time().'.'.$ext;
+            // Here we will store thumbnail
+            $thumbnail = $request->thumbnail;
+            $thumbnailName = 'thu'.'-'.time().'-'.$thumbnail->getClientOriginalName();
 
             // Save img to the directory
-            $image->move(public_path('uploads/img'), $imageName);
+            $thumbnail->move(public_path('uploads/img'), $thumbnailName);
 
-            // Save image name in the db
-            $post->image = $imageName;
+            // Save thumbnail name in the db
+            $post->thumbnail = $thumbnailName;
             $post->save();
         }
         return redirect('/dashboard')->with('success', 'Post updated successfully');
@@ -112,8 +112,8 @@ class PostController extends Controller
     public function destroy($id) {
         $post = Post::findOrFail($id);
 
-        // delete image
-        File::delete(public_path('uploads/img/'.$post->image));
+        // delete thumbnail
+        File::delete(public_path('uploads/img/'.$post->thumbnail));
 
         // delete post from db
         $post->delete();

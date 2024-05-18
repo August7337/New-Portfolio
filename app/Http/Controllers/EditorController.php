@@ -9,19 +9,11 @@ use Image;
 
 class EditorController extends Controller
 {
-    public function index(){
-        return view('editor');
-    }
-
-    public function store(Request $request){
-        echo $request->input('editor');
-    }
-
     public function upload(Request $request)
     {
         $uploadedImage = $request->file('upload');
 
-        $fileName = $uploadedImage->getClientOriginalName();
+        $fileName = 'img'.'-'.time().'-'.$uploadedImage->getClientOriginalName();
 
         $uploadedImage->move(public_path('uploads/img'), $fileName);
 

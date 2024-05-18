@@ -35,12 +35,6 @@
                     @endif
                     <h3 class="mb-4 text-xl">Create a post</h3>
 
-                    <form action="{{ url('store') }}" method="post">
-                        @csrf
-                        <textarea name="editor" id="editor"></textarea>
-                        <button class="rounded-lg bg-slate-900 w-full h-12 text-white mb-20 mt-8" type="submit">Submit</button>
-                    </form>
-
                     <form enctype="multipart/form-data" action="{{ route('posts.store') }}" method="post">
                         @csrf
                         <div class="mb-4 flex flex-col">
@@ -51,29 +45,34 @@
                                 <p class="text-red-300">{{ $message }}</p>
                             @enderror
                         </div>
-    
+
                         <div class="mb-4 flex flex-col">
-                            <label for="description">Description</label>
-                            <textarea name="description" placeholder="Description" id="description" cols="30" rows="5" 
-                            class="rounded text-gray-800 dark:text-white bg-white dark:bg-gray-800">{{ old('description') }}</textarea>
-                            @error('description')
+                            <label for="date">Date</label>
+                            <input type="text" id="date" placeholder="Date" name="date" value="{{ old('date') }}" 
+                            class="rounded text-gray-800 dark:text-white bg-white dark:bg-gray-800">
+                            @error('date')
                                 <p class="text-red-300">{{ $message }}</p>
                             @enderror
                         </div>
     
                         <div class="mb-8 flex flex-col">
-                            <label for="image" class="">Image</label>
-                            <input type="file" name="image" id="image" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600
+                            <label for="thumbnail" class="">Thumbnail</label>
+                            <input type="file" name="thumbnail" id="thumbnail" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600
                               file:bg-gray-50 file:border-0
                               file:me-4
                               file:py-3 file:px-4
                               dark:file:bg-gray-700 dark:file:text-gray-400">
-                            @error('image')
+                            @error('thumbnail')
                             <p class="text-red-300">{{ $message }}</p>
                             @enderror
                         </div>
-    
-                        <button class="rounded-lg bg-slate-900 w-full h-12 text-white mb-20">Submit</button>
+
+                        <textarea name="editor" id="editor">{{ old('html') }}</textarea>
+                        @error('html')
+                            <p class="text-red-300">{{ $message }}</p>
+                        @enderror
+
+                        <button class="rounded-lg bg-slate-900 w-full h-12 text-white mb-20 mt-8">Submit</button>
 
                     </form>
 
@@ -87,13 +86,13 @@
                                         ID
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Image
+                                        Thumbnail
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Title
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Description
+                                        Date
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Create at
@@ -111,15 +110,15 @@
                                                 {{ $post->id }}
                                             </td>
                                             <td class="p-4">
-                                                @if ($post->image != "")
-                                                    <img width="50" src="{{asset('uploads/img/'.$post->image)}}" alt="" loading="lazy">
+                                                @if ($post->thumbnail != "")
+                                                    <img width="50" src="{{asset('uploads/img/'.$post->thumbnail)}}" alt="" loading="lazy">
                                                 @endif
                                             </td>
                                             <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                                                 {{ $post->title }}
                                             </td>
                                             <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                                {{ Str::limit($post->description, 250) }}
+                                                {{ Str::limit($post->date, 250) }}
                                             </td>
                                             <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                                                 {{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y') }}

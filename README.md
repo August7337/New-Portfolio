@@ -8,7 +8,11 @@ user : SUPER@admin
 password : admin
 
 
-to do:
+    to do:
+    - store path of img for delete
+    - ckeditor dark mode
+    - url
+    - sitemap
 
 db :
     post:
@@ -16,10 +20,9 @@ db :
         - Title
         - Date (txt)
         - Html
-        - Thumbnail
+        - Thumbnail path
 
     img:
         - id
-        - img data
         - path
         - post assigned (id)
