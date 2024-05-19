@@ -72,6 +72,15 @@
                             <p class="text-red-300">{{ $message }}</p>
                         @enderror
 
+                        <div class="mt-4 flex flex-col">
+                            <label for="url">Url</label>
+                            <input type="text" id="url" placeholder="Url" name="url" value="{{ old('url') }}" 
+                            class="rounded text-gray-800 dark:text-white bg-white dark:bg-gray-800">
+                            @error('url')
+                                <p class="text-red-300">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <button class="rounded-lg bg-slate-900 w-full h-12 text-white mb-20 mt-8">Submit</button>
 
                     </form>

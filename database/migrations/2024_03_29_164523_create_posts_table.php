@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('date');
+            $table->string('date')->nullable();
             $table->text('html');
-            $table->string('thumbnail')->nullable();
+            $table->string('thumbnail');
+            $table->string('url')->unique();
             $table->timestamps();
         });
     }

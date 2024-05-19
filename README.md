@@ -11,7 +11,6 @@ password : admin
     to do:
     - store path of img for delete
     - ckeditor dark mode
-    - url
     - sitemap
 
 db :

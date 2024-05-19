@@ -18,8 +18,8 @@ class PostController extends Controller
         ]);
     }
 
-    public function show($id) {
-        $post = Post::findOrFail($id);
+    public function show($url) {
+        $post = Post::where('url', $url)->firstOrFail();
         return view('posts.post', [
             'post' => $post
         ]);
@@ -28,7 +28,8 @@ class PostController extends Controller
     // This method will store a post in the data-base
     public function store(Request $request) {
         $rules = [
-            'title' => 'required|min:3'
+            'title' => 'required|min:3',
+            'url' => 'required'
         ];
 
         if ($request->thumbnail != "") {
@@ -46,7 +47,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->date = $request->date;
         $post->html = $request->input('editor');
-        $post->save();
+        $post->url = $request->url;
 
         // if an img is upload :
         if ($request->thumbnail != "") {
@@ -60,8 +61,8 @@ class PostController extends Controller
 
             // Save thumbnail name in the db
             $post->thumbnail = $thumbnailName;
-            $post->save();
         }
+        $post->save();
         return redirect('/dashboard')->with('success', 'Post added successfully');
     }
 
@@ -77,7 +78,8 @@ class PostController extends Controller
     public function update($id, Request $request) {
         $post = Post::findOrFail($id);
         $rules = [
-            'title' => 'required|min:3'
+            'title' => 'required|min:3',
+            'url' => 'required'
         ];
 
         if ($request->thumbnail != "") {
@@ -94,7 +96,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->date = $request->date;
         $post->html = $request->input('editor');
-        $post->save();
+        $post->url = $request->url;
 
         // if an img is upload :
         if ($request->thumbnail != "") {
@@ -110,8 +112,8 @@ class PostController extends Controller
 
             // Save thumbnail name in the db
             $post->thumbnail = $thumbnailName;
-            $post->save();
         }
+        $post->save();
         return redirect('/dashboard')->with('success', 'Post updated successfully');
     }
 
