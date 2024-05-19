@@ -17,23 +17,25 @@
             /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
         </style>
     </head>
-    <body>
-
-        @if ($posts->isNotEmpty())
-            @foreach ($posts as $post)
-                <div class="bg-slate-300 w-96 mb-9">
-                    @if ($post->image != "")
-                         <img class="w-40 h-40 sm:w-80 sm:h-80 object-cover	mr-10" width="320" height="320" src="{{asset('uploads/img/'.$post->image)}}" alt="{{ $post->title }} image" loading="lazy">
-                     @endif
-                    <div>
-                        <h4 class="text-white text-4xl font-bold opacity-80 mb-4">{{ $post->title }}</h4>
-                        <p class="text-white text-sm sm:text-xl opacity-75">{{ $post->description }}</p>
+    <body class=" bg-slate-800">
+        <header class=" bg-black h-20 justify-center flex">
+            <p class=" text-slate-50">Header</p>
+        </header>
+        <main class=" w-full flex flex-col justify-center items-center">
+            @if ($posts->isNotEmpty())
+                @foreach ($posts as $post)
+                    <div class="bg-slate-600 w-96 my-9 rounded-lg">
+                        <div>
+                            <h2 class="text-white text-4xl font-bold opacity-80 mb-4 text-center mt-2">{{ $post->title }}</h2>
+                            <p class="text-white text-sm sm:text-xl opacity-75 text-center mb-2">{{ $post->date }}</p>
+                            <a href="/posts/{{ $post->url }}">
+                                <img src="/uploads/img/{{ $post->thumbnail }}" alt="" class=" rounded-b-lg">
+                            </a>
+                        </div>
                     </div>
-                    <p >{{ \Carbon\Carbon::parse($post->created_at)->format('d M, Y') }}</p>
-                </div>
-            @endforeach 
-        @endif
-            
-        </div>
+                @endforeach 
+            @endif
+            </div>
+        </main>
     </body>
 </html>

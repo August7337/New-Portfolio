@@ -35,7 +35,7 @@
                         @csrf
                         <div class="mb-4 flex flex-col">
                             <label for="title">Title</label>
-                            <input type="text" id="title" placeholder="Title" name="title" value="{{ old('title', $post->title) }}" 
+                            <input type="text" id="title" placeholder="Title..." name="title" value="{{ old('title', $post->title) }}" 
                             class="rounded text-gray-800 dark:text-white bg-white dark:bg-gray-800">
                             @error('title')
                                 <p class="text-red-300">{{ $message }}</p>
@@ -44,7 +44,7 @@
     
                         <div class="mb-4 flex flex-col">
                             <label for="date">Date</label>
-                            <input type="text" id="date" placeholder="Date" name="date" value="{{ old('date', $post->date) }}" 
+                            <input type="text" id="date" placeholder="Date..." name="date" value="{{ old('date', $post->date) }}" 
                             class="rounded text-gray-800 dark:text-white bg-white dark:bg-gray-800">
                             @error('date')
                                 <p class="text-red-300">{{ $message }}</p>
@@ -63,6 +63,7 @@
                             @enderror
                         </div>
 
+                        <label for="editor" class="">Body</label>
                         <textarea name="editor" id="editor">{{ old('html', $post->html) }}</textarea>
                         @error('html')
                             <p class="text-red-300">{{ $message }}</p>
@@ -70,7 +71,7 @@
 
                         <div class="mt-4 flex flex-col">
                             <label for="url">Url</label>
-                            <input type="text" id="url" placeholder="Url" name="url" value="{{ old('url', $post->url) }}" 
+                            <input type="text" id="url" placeholder="Url..." name="url" value="{{ old('url', $post->url) }}" 
                             class="rounded text-gray-800 dark:text-white bg-white dark:bg-gray-800">
                             @error('url')
                                 <p class="text-red-300">{{ $message }}</p>
