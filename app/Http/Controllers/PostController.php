@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Post;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+
 
 class PostController extends Controller
 {
@@ -56,11 +59,19 @@ class PostController extends Controller
             $thumbnail = $request->thumbnail;
             $thumbnailName = 'thu'.'-'.time().'-'.$thumbnail->getClientOriginalName();
 
+            // Create the 500 x 500 thumbnail
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($request->file('thumbnail'));
+            $image = $image->cover(500, 500);
+            $image->save(public_path('uploads/img/thumbnail/'.$thumbnailName));;
+            
             // Save img to the directory
             $thumbnail->move(public_path('uploads/img'), $thumbnailName);
 
             // Save thumbnail name in the db
             $post->thumbnail = $thumbnailName;
+            //$thumbnail->isValid()
+            
         }
         $post->save();
         return redirect('/dashboard')->with('success', 'Post added successfully');
@@ -107,6 +118,12 @@ class PostController extends Controller
             $thumbnail = $request->thumbnail;
             $thumbnailName = 'thu'.'-'.time().'-'.$thumbnail->getClientOriginalName();
 
+            // Create the 500 x 500 thumbnail
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($request->file('thumbnail'));
+            $image = $image->cover(500, 500);
+            $image->save(public_path('uploads/img/thumbnail/'.$thumbnailName));;
+
             // Save img to the directory
             $thumbnail->move(public_path('uploads/img'), $thumbnailName);
 
@@ -123,6 +140,7 @@ class PostController extends Controller
 
         // delete thumbnail
         File::delete(public_path('uploads/img/'.$post->thumbnail));
+        File::delete(public_path('uploads/img/thumbnail/'.$post->thumbnail));
 
         // delete post from db
         $post->delete();
