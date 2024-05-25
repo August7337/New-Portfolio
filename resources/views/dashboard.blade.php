@@ -121,7 +121,7 @@
                                             </td>
                                             <td class="p-4">
                                                 @if ($post->thumbnail != "")
-                                                    <img width="50" src="{{asset('uploads/img/thumbnail/'.$post->thumbnail)}}" alt="" loading="lazy">
+                                                    <img width="50" src="{{asset('uploads/img/thumbnail/little/'.$post->thumbnail)}}" alt="" loading="lazy">
                                                 @endif
                                             </td>
                                             <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
@@ -164,7 +164,7 @@
         ClassicEditor
             .create( document.querySelector( '#editor' ),{
                 ckfinder: {
-                    uploadUrl: '{{route('upload').'?_token='.csrf_token()}}',
+                    uploadUrl: '{{route('posts.upload_image').'?_token='.csrf_token()}}',
                 }
             })
             .catch( error => {

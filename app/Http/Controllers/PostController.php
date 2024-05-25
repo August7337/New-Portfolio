@@ -9,7 +9,6 @@ use App\Models\Post;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
-
 class PostController extends Controller
 {
     // This method will show posts page
@@ -59,19 +58,14 @@ class PostController extends Controller
             $thumbnail = $request->thumbnail;
             $thumbnailName = 'thu'.'-'.time().'-'.$thumbnail->getClientOriginalName();
 
-            // Create the 500 x 500 thumbnail
+            // Create Image Manager for resize thumbnail (intervention v3)
             $manager = new ImageManager(new Driver());
-            $image = $manager->read($request->file('thumbnail'));
-            $image = $image->cover(500, 500);
-            $image->save(public_path('uploads/img/thumbnail/'.$thumbnailName));;
+            $resized_thumbnail = $manager->read($request->file('thumbnail'));
+            $resized_thumbnail->scaleDown(width: 720)->save(public_path('uploads/img/thumbnail/'.$thumbnailName));
+            $resized_thumbnail->cover(500, 500)->save(public_path('uploads/img/thumbnail/little/'.$thumbnailName));
             
-            // Save img to the directory
-            $thumbnail->move(public_path('uploads/img'), $thumbnailName);
-
             // Save thumbnail name in the db
             $post->thumbnail = $thumbnailName;
-            //$thumbnail->isValid()
-            
         }
         $post->save();
         return redirect('/dashboard')->with('success', 'Post added successfully');
@@ -112,20 +106,18 @@ class PostController extends Controller
         // if an img is upload :
         if ($request->thumbnail != "") {
             // delete old thumbnail
-            File::delete(public_path('uploads/img/'.$post->thumbnail));
+            File::delete(public_path('uploads/img/thumbnail/'.$post->thumbnail));
+            File::delete(public_path('uploads/img/thumbnail/little/'.$post->thumbnail));
 
             // Here we will store thumbnail
             $thumbnail = $request->thumbnail;
             $thumbnailName = 'thu'.'-'.time().'-'.$thumbnail->getClientOriginalName();
 
-            // Create the 500 x 500 thumbnail
+            // Create Image Manager for resize thumbnail (intervention v3)
             $manager = new ImageManager(new Driver());
-            $image = $manager->read($request->file('thumbnail'));
-            $image = $image->cover(500, 500);
-            $image->save(public_path('uploads/img/thumbnail/'.$thumbnailName));;
-
-            // Save img to the directory
-            $thumbnail->move(public_path('uploads/img'), $thumbnailName);
+            $resized_thumbnail = $manager->read($request->file('thumbnail'));
+            $resized_thumbnail->scaleDown(width: 720)->save(public_path('uploads/img/thumbnail/'.$thumbnailName));
+            $resized_thumbnail->cover(500, 500)->save(public_path('uploads/img/thumbnail/little/'.$thumbnailName));
 
             // Save thumbnail name in the db
             $post->thumbnail = $thumbnailName;
@@ -139,11 +131,27 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         // delete thumbnail
-        File::delete(public_path('uploads/img/'.$post->thumbnail));
         File::delete(public_path('uploads/img/thumbnail/'.$post->thumbnail));
+        File::delete(public_path('uploads/img/thumbnail/little/'.$post->thumbnail));
 
         // delete post from db
         $post->delete();
         return redirect('/dashboard')->with('success', 'Post deleted successfully');
+    }
+
+    public function upload_image(Request $request)
+    {
+        $uploadedImage = $request->file('upload');
+
+        $fileName = 'img'.'-'.time().'-'.$uploadedImage->getClientOriginalName();
+
+        // Create Image Manager for resize image (intervention v3)
+        $imageManager = new ImageManager(new Driver());
+        $resizedImage = $imageManager->read($request->file('upload'));
+        $resizedImage->scaleDown(width: 720)->save(public_path('uploads/img/'.$fileName));
+
+        $url = asset('uploads/img/' . $fileName);
+
+        return response()->json(['fileName' => $fileName, 'uploaded'=> 1, 'url' => $url]);
     }
 }

@@ -26,14 +26,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::post('/posts/image_upload', [PostController::class, 'upload_image'])->name('posts.upload_image');
     Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 
-Route::post('/store', [EditorController::class, 'store']);
-Route::post('/editor/image_upload', [EditorController::class, 'upload'])->name('upload');
-
-Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
 
 require __DIR__.'/auth.php';

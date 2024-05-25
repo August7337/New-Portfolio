@@ -29,7 +29,7 @@
                             <h2 class="text-white text-4xl font-bold opacity-80 mb-4 text-center mt-2">{{ $post->title }}</h2>
                             <p class="text-white text-sm sm:text-xl opacity-75 text-center mb-2">{{ $post->date }}</p>
                             <a href="/posts/{{ $post->url }}">
-                                <img src="/uploads/img/thumbnail/{{ $post->thumbnail }}" alt="" class=" rounded-b-lg" loading="lazy">
+                                <img src="/uploads/img/thumbnail/little/{{ $post->thumbnail }}" alt="" class=" rounded-b-lg" loading="lazy">
                             </a>
                         </div>
                     </div>
