@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Post;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use DOMDocument;
 
 class PostController extends Controller
 {
@@ -51,6 +52,13 @@ class PostController extends Controller
         $post->html = $request->input('editor');
         $post->url = $request->url;
 
+        $lastPost = Post::max('id');
+        $post->html = preg_replace(
+            '/(src="[^"]*\/uploads\/img\/)not_attributed\//',
+            '${1}' . $lastPost + 1 . '/',
+            $post->html
+        );
+
         // if an img is upload :
         if ($request->thumbnail != "") {
 
@@ -68,6 +76,14 @@ class PostController extends Controller
             $post->thumbnail = $thumbnailName;
         }
         $post->save();
+
+        // Create a folder where will be store the article images
+        File::makeDirectory(public_path('uploads/img/') . $post->id);
+
+        // search if an image isn't used, and delete it
+        $imagePaths = $this->extractImagePaths($post->html);
+        $this->cleanUpImages($imagePaths, $post->id);
+
         return redirect('/dashboard')->with('success', 'Post added successfully');
     }
 
@@ -123,6 +139,19 @@ class PostController extends Controller
             $post->thumbnail = $thumbnailName;
         }
         $post->save();
+
+        $lastPost = Post::max('id');
+        $post->html = preg_replace(
+            '/(src="[^"]*\/uploads\/img\/)not_attributed\//',
+            '${1}' . $post->id . '/',
+            $post->html
+        );
+        $post->save();
+
+        // search if an image isn't used, and delete it
+        $imagePaths = $this->extractImagePaths($post->html);
+        $this->cleanUpImages($imagePaths, $post->id);
+
         return redirect('/dashboard')->with('success', 'Post updated successfully');
     }
 
@@ -133,6 +162,9 @@ class PostController extends Controller
         // delete thumbnail
         File::delete(public_path('uploads/img/thumbnail/'.$post->thumbnail));
         File::delete(public_path('uploads/img/thumbnail/little/'.$post->thumbnail));
+
+        // delete article images
+        File::deleteDirectory(public_path('uploads/img/' . $id . '/'));
 
         // delete post from db
         $post->delete();
@@ -148,10 +180,53 @@ class PostController extends Controller
         // Create Image Manager for resize image (intervention v3)
         $imageManager = new ImageManager(new Driver());
         $resizedImage = $imageManager->read($request->file('upload'));
-        $resizedImage->scaleDown(width: 720)->save(public_path('uploads/img/'.$fileName));
+        $resizedImage->scaleDown(width: 720)->save(public_path('uploads/img/not_attributed/'.$fileName));
 
-        $url = asset('uploads/img/' . $fileName);
+        $url = asset('uploads/img/not_attributed/' . $fileName);
 
         return response()->json(['fileName' => $fileName, 'uploaded'=> 1, 'url' => $url]);
+    }
+
+    public function extractImagePaths($postHtml)
+    {
+        $dom = new DOMDocument();
+        // load HTML
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($postHtml);
+        libxml_clear_errors();
+        
+        $images = $dom->getElementsByTagName('img');
+        $imagePaths = [];
+
+        // extract all src of <img>
+        foreach ($images as $img) {
+            $src = $img->getAttribute('src');
+            $path = parse_url($src, PHP_URL_PATH);
+            if (strpos($path, '/uploads/img/') === 0) {
+                $imagePaths[] = basename($path);
+            }
+        }
+
+        return $imagePaths;
+    }
+
+    public function cleanUpImages($imagePaths, $id)
+    {
+        $directory = public_path('uploads/img/not_attributed/');
+        $destinationDirectory = public_path('uploads/img/' . $id . '/');
+        $allFiles = File::files($directory);
+
+        // Convert the extracted paths to an associative array for faster lookup
+        $existingImages = array_flip($imagePaths);
+
+        foreach ($allFiles as $file) {
+            $filename = $file->getFilename();
+            if (!isset($existingImages[$filename])) {
+                // If the file is not in the list of image paths, delete it
+                File::delete($directory . $filename);
+            } else {
+                File::move($directory . $filename, $destinationDirectory . $filename);
+            }
+        }
     }
 }
