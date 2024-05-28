@@ -1,6 +1,7 @@
 Add the first admin :
 
-vendor/bin/sail mysql
+docker exec -it 404933a5821a bash
+mysql -u root -p
 USE AppDB;
 INSERT INTO users (name, email, password) VALUES ('admin', 'SUPER@admin', '$2y$10$xbgid/MlCaA2k2HjstCuxOPvNawcClTmnUr/9UbSZVcD.F1v9N262');
 
