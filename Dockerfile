@@ -27,7 +27,7 @@ WORKDIR /var/www/html
 COPY . .
 
 # Exposer le port pour Laravel
-EXPOSE 8000
+EXPOSE 8008
 
 # Commande par défaut
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
