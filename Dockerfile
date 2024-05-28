@@ -1,32 +1,27 @@
-FROM php:8.2-apache
+FROM php:8.2
 
-# Install dependencies
-RUN apt-get update && \
-    apt-get install -y \
-    libzip-dev \
-    zip
+# Mettre à jour et installer les dépendances nécessaires
+RUN apt-get update -y && apt-get install -y \
+    openssl \
+    zip \
+    unzip \
+    git \
+    libonig-dev
 
-# Enable mod_rewrite
-RUN a2enmod rewrite
-
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql zip
-
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
-
-# Copy the application code
-COPY . /var/www/html
-
-# Set the working directory
-WORKDIR /var/www/html
-
-# Install composer
+# Installer Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install project dependencies
-RUN composer install
+# Installer les extensions PHP
+RUN docker-php-ext-install pdo mbstring pdo_mysql
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Définir le répertoire de travail
+WORKDIR /var/www/html
+
+# Copier le contenu du projet dans le conteneur
+COPY . .
+
+# Exposer le port pour Laravel
+EXPOSE 8000
+
+# Commande par défaut
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]

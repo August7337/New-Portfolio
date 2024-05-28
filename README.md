@@ -7,21 +7,6 @@ INSERT INTO users (name, email, password) VALUES ('admin', 'SUPER@admin', '$2y$1
 user : SUPER@admin
 password : admin
 
-
-    to do:
-    - store path of img for delete
+to do:
     - ckeditor dark mode
     - sitemap
-
-db :
-    post:
-        - id
-        - Title
-        - Date (txt)
-        - Html
-        - Thumbnail path
-
-    img:
-        - id
-        - path
-        - post assigned (id)
