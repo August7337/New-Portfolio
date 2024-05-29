@@ -9,7 +9,7 @@ services:
       DB_USER: '${DB_USERNAME}'
       DB_ROOT_PASSWORD: '${DB_PASSWORD}'
     ports:
-      - 8008:8008
+      - 8000:8000
     volumes:
       - ./:/var/www/html
     depends_on:
