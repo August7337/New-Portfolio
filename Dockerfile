@@ -9,7 +9,8 @@ RUN apt-get update -y && apt-get install -y \
     unzip \
     git \
     libonig-dev \
-    libwebp-dev
+    libwebp-dev \
+    curl
 
 # Installer les extensions PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
