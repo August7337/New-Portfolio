@@ -31,4 +31,4 @@ services:
 
 networks:
   app:
-    driver: bridge
+    driver: local
