@@ -60,6 +60,11 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.3/cli/conf.d/99-sail.ini
 RUN chmod +x /usr/local/bin/start-container
 
+COPY . .
+
+RUN if [ -f composer.json ]; then composer install; fi
+RUN if [ -f package.json ]; then npm install; fi
+
 EXPOSE 8000
 
 ENTRYPOINT ["start-container"]
