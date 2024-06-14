@@ -8,6 +8,11 @@ INSERT INTO users (name, email, password) VALUES ('admin', 'SUPER@admin', '$2y$1
 user : SUPER@admin
 password : admin
 
+Generate sitemap.xml :
+    php artisan sitemap:generate
+    or
+    ./vendor/bin/sail artisan sitemap:generate
+
 to do:
-    - ckeditor dark mode
-    - sitemap
+    - html in ckeditor 
+    - designe

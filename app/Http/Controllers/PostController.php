@@ -78,8 +78,10 @@ class PostController extends Controller
         $post->save();
 
         // Create a folder where will be store the article images
-        File::makeDirectory(public_path('uploads/img/') . $post->id);
-
+        if (!File::exists('uploads/img/' . $post->id)) {
+            File::makeDirectory(public_path('uploads/img/') . $post->id);
+        }
+    
         // search if an image isn't used, and delete it
         $imagePaths = $this->extractImagePaths($post->html);
         $this->cleanUpImages($imagePaths, $post->id);
