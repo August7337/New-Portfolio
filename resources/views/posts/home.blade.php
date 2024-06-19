@@ -17,10 +17,21 @@
             /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
         </style>
     </head>
-    <body class=" bg-slate-800">
-        <header class=" bg-black h-20 justify-center flex">
-            <p class=" text-slate-50">Header</p>
+    <body>
+        <header class="h-20 justify-start flex w-full fixed backdrop-blur-xl">
+            <p class="text-center align-middle">Tarit Augustin</p>
         </header>
+
+        <section class="hero min-h-screen bg-base-200">
+            <div class="hero-content text-center">
+                <div class="max-w-xl">
+                    <h1 class="text-7xl font-extrabold">Tarit Augustin</h1>
+                    <p class="py-6 max-w-md">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+            </div>
+        </section>
+
         <main class=" w-full flex flex-col justify-center items-center">
             @if ($posts->isNotEmpty())
                 @foreach ($posts as $post)

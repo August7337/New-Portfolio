@@ -20,5 +20,12 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        require('daisyui'),
+        forms,
+    ],
+
+    daisyui: {
+        themes: ["cupcake"],
+      },
 };
