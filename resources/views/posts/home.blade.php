@@ -18,35 +18,34 @@
         </style>
     </head>
     <body>
-        <header class="h-20 justify-start flex w-full fixed backdrop-blur-xl">
-            <p class="text-center align-middle">Tarit Augustin</p>
-        </header>
-
         <section class="hero min-h-screen bg-base-200">
-            <div class="hero-content text-center">
+            <div class="hero-content text-center flex-col">
                 <div class="max-w-xl">
                     <h1 class="text-7xl font-extrabold">Tarit Augustin</h1>
                     <p class="py-6 max-w-md">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button class="btn btn-primary">Get Started</button>
+                    <button id="StartBtn"><a class="btn btn-primary" href="#projects">Get Started</a></button>
                 </div>
             </div>
         </section>
 
-        <main class=" w-full flex flex-col justify-center items-center">
+        <main class=" w-full flex flex-col justify-center items-center pt-10 pb-24 bg-base-100" id="projects">
+            <h3 class="text-7xl font-extrabold my-12">Projects</h3>
             @if ($posts->isNotEmpty())
-                @foreach ($posts as $post)
-                    <div class="bg-slate-600 w-96 my-9 rounded-lg">
-                        <div>
-                            <h2 class="text-white text-4xl font-bold opacity-80 mb-4 text-center mt-2">{{ $post->title }}</h2>
-                            <p class="text-white text-sm sm:text-xl opacity-75 text-center mb-2">{{ $post->date }}</p>
-                            <a href="/posts/{{ $post->url }}">
-                                <img src="/uploads/img/thumbnail/little/{{ $post->thumbnail }}" alt="" class=" rounded-b-lg" loading="lazy">
-                            </a>
+                <div class="grid grid-cols-2 gap-10">
+                    @foreach ($posts as $post)
+                        <div class="card card-compact w-72 bg-base-100 shadow-xl">
+                            <figure><img src="/uploads/img/thumbnail/little/{{ $post->thumbnail }}" alt="Shoes" /></figure>
+                            <div class="card-body">
+                              <h2 class="card-title">{{ $post->title }}</h2>
+                              <p>{{ $post->date }}</p>
+                              <div class="card-actions justify-end">
+                                <a href="/posts/{{ $post->url }}" class="btn btn-primary">Buy Now</a>
+                              </div>
+                            </div>
                         </div>
-                    </div>
-                @endforeach 
+                    @endforeach 
+                </div>
             @endif
-            </div>
         </main>
         <footer class="footer p-10 bg-neutral text-neutral-content">
             <aside>
@@ -64,7 +63,7 @@
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
         <script>
-            document.getElementsByClassName('btn')[0].addEventListener('click', () => {
+            document.getElementById('StartBtn').addEventListener('click', () => {
                 var end = Date.now() + (1 * 1000);
 
                 // go Buckeyes!
