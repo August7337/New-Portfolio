@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+    background-color: var(--fallback-p,oklch(var(--p)/1));
+    color: theme('colors.base-200');
+}
+
+body {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: theme('colors.base-200');
+}
+
+.wrapper {
+    max-width: 720px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 65px 0;
+}
+
+.title-date {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 21px;
+}
+
+.content {
+    margin-bottom: 35px;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 4.5rem;
+    line-height: 1;
+    text-align: center;
+    color: var(--fallback-bc, oklch(var(--bc) / 1));
+    font-family: Figtree, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--fallback-bc, oklch(var(--bc) / 1));
+    font-family: Figtree, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+img {
+    width: 720px;
+}
+
+.image-style-side {
+    float: right;
+    margin-left: 1.5rem;
+    max-width: 50%;
+}
+
+figure {
+    margin: 15px 0;
+}
+
+figcaption {
+    background-color: theme('colors.base-300');
+    padding: 7px;
+}
+
+.content a {
+    color: theme(colors.primary);
+    text-decoration: underline;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+blockquote {
+    border-left: 5px solid #ccc;
+    font-style: italic;
+    overflow: hidden;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    margin: 5px 0;
+}
+
+table {
+    border: 1px double #b3b3b3;
+    border-collapse: collapse;
+    border-spacing: 0;
+    height: 100%;
+    width: 100%;
+}
+
+td {
+    border: 1px solid #bfbfbf;
+    min-width: 2em;
+    padding: .6em;
+}
+
+ul {
+    list-style: circle;
+    margin-left: 21px;
+}
+
+ol {
+    list-style-type: decimal;
+    margin-left: 21px;
+}

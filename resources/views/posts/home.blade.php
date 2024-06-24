@@ -29,7 +29,7 @@
         </section>
 
         <main class=" w-full flex flex-col justify-center items-center pt-10 pb-24 bg-base-100" id="projects">
-            <h3 class="text-7xl font-extrabold my-12">Projects</h3>
+            <h3 class="text-6xl font-extrabold my-12">Projects</h3>
             @if ($posts->isNotEmpty())
                 <div class="grid grid-cols-2 gap-10">
                     @foreach ($posts as $post)
