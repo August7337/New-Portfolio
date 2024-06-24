@@ -76,7 +76,7 @@ figcaption {
 }
 
 .content a {
-    color: theme(colors.primary);
+    color: theme('colors.primary');
     text-decoration: underline;
 }
 
