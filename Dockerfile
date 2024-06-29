@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install -y git
 
 COPY --chown=www-data:www-data . /var/www/html
 
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
 USER www-data
 
 RUN npm install
