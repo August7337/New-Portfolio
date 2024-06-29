@@ -4,7 +4,7 @@ services:
     volumes:
       - './storage:/var/www/html/storage'
     ports:
-      - '8000:80'
+      - '8001:80'
       - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
   scheduler:
     build: .
