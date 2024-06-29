@@ -1,5 +1,6 @@
 services:
   app:
     build: .
+    user: "1000:1000"
     volumes:
       - './storage:/var/www/html/storage'
