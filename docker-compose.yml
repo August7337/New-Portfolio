@@ -3,6 +3,9 @@ services:
     build: .
     volumes:
       - './storage:/var/www/html/storage'
+    ports:
+      - '80:80'
+      - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
   scheduler:
     build: .
     command:
