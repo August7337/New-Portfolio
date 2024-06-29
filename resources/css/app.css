@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::selection {
+    background-color: var(--fallback-p,oklch(var(--p)/1));
+    color: theme('colors.base-200');
+}
+
+html { scroll-behavior: smooth; }

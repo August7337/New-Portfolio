@@ -165,7 +165,10 @@
             .create( document.querySelector( '#editor' ),{
                 ckfinder: {
                     uploadUrl: '{{route('posts.upload_image').'?_token='.csrf_token()}}',
-                }
+                },
+                mediaEmbed: {
+                    previewsInData:true
+                },
             })
             .catch( error => {
                   

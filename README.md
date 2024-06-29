@@ -16,3 +16,10 @@ Generate sitemap.xml :
 to do:
     - html in ckeditor 
     - designe
+
+
+docker pull --platform=linux/arm64 serversideup/php:8.3-fpm-nginx
+docker build -t august7337/portfolio:latest .
+docker push august7337/portfolio:latest
+
+--platform=linux/arm64
