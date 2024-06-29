@@ -3,16 +3,3 @@ services:
     build: .
     volumes:
       - './storage:/var/www/html/storage'
-    ports:
-      - '8001:80'
-      - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
-  scheduler:
-    build: .
-    command:
-      - php
-      - /var/www/html/artisan
-      - 'schedule:work'
-    volumes:
-      - './storage:/var/www/html/storage'
-    environment:
-      PHP_FPM_POOL_NAME: app_scheduler
