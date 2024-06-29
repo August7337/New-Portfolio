@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 serversideup/php:8.3-fpm-nginx
+FROM --platform=linux/arm64 serversideup/php:8.3-fpm
 
 ENV PHP_OPCACHE_ENABLE=1
 
