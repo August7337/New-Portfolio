@@ -18,4 +18,4 @@ RUN npm run build
 
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
-EXPOSE 80
+EXPOSE 8000
