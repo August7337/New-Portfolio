@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 serversideup/php:8.3-fpm-nginx
+FROM serversideup/php:8.3-fpm-nginx
 
 ENV PHP_OPCACHE_ENABLE=1
 
@@ -17,3 +17,5 @@ RUN npm install
 RUN npm run build
 
 RUN composer install --no-interaction --optimize-autoloader --no-dev
+
+EXPOSE 80
