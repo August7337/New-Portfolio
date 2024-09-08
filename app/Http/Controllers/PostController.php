@@ -45,6 +45,20 @@ class PostController extends Controller
             return redirect('/dashboard')->withInput()->withErrors($validator);
         }
 
+        // Create a folder where will be store the article images
+        if (!File::exists('uploads/img/')) {
+            File::makeDirectory(public_path('uploads/img/'));
+        }
+        if (!File::exists('uploads/img/thumbnail/')) {
+            File::makeDirectory(public_path('uploads/img/thumbnail/'));
+        }
+        if (!File::exists('uploads/img/thumbnail/little/')) {
+            File::makeDirectory(public_path('uploads/img/thumbnail/little/'));
+        }
+        if (!File::exists('uploads/img/not_attributed/')) {
+            File::makeDirectory(public_path('uploads/img/not_attributed/'));
+        }
+
         // Here we will insert post in db
         $post = new Post();
         $post->title = $request->title;
