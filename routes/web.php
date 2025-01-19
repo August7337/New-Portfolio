@@ -6,7 +6,7 @@ use App\Http\Controllers\EditorController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 
-Route::get('/', [PostController::class, 'index'])->name('posts.index');
+Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     $posts = Post::orderBy('created_at', 'DESC')->get();
@@ -28,9 +28,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
-
-Route::get('/dev', function () {
-    return view('dev');
-})->name('dev');
 
 require __DIR__.'/auth.php';

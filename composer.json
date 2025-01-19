@@ -9,6 +9,7 @@
         "intervention/image": "^3.6",
         "intervention/image-laravel": "^1.2",
         "laravel/framework": "^11.0",
+        "laravel/prompts": "^0.1.25",
         "laravel/tinker": "^2.9",
         "spatie/laravel-sitemap": "^7.2"
     },

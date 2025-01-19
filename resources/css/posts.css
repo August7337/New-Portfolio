@@ -3,49 +3,31 @@
 @tailwind utilities;
 
 ::selection {
-    background-color: var(--fallback-p,oklch(var(--p)/1));
-    color: theme('colors.base-200');
+    background-color: #2dd4bf;
+    color: #fff;
 }
 
-body {
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: theme('colors.base-200');
+html { scroll-behavior: smooth; }
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
 }
 
-.wrapper {
-    max-width: 720px;
-    width: 100%;
-    flex-direction: column;
+::-webkit-scrollbar-track {
+    background: #34445b;
 }
 
-.info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 65px 0;
+::-webkit-scrollbar-thumb {
+    background-color: #9b9d9d;
+    border-radius: 6px;
+    border: 3px solid #34445b;
 }
 
-.title-date {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    margin-bottom: 21px;
-}
-
-.content {
-    margin-bottom: 35px;
-}
-
-h1 {
-    font-weight: 800;
-    font-size: 4.5rem;
-    line-height: 1;
-    text-align: center;
-    color: var(--fallback-bc, oklch(var(--bc) / 1));
-    font-family: Figtree, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #9b9d9d #34445b;
 }
 
 h3 {
@@ -56,7 +38,7 @@ h3 {
     font-family: Figtree, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-img {
+.content img {
     width: 720px;
 }
 
@@ -75,9 +57,10 @@ figcaption {
     padding: 7px;
 }
 
-.content a {
-    color: theme('colors.primary');
+section a {
+    color: #14b8a6;
     text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 a:hover {
