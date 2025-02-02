@@ -49,7 +49,7 @@
     </div>
     @auth
         <a href="{{ route('dashboard') }}"
-            class=" z-10 fixed bottom-8 right-8 px-6 py-3 bg-teal-500 text-gray-900 rounded-lg text-lg font-semibold hover:bg-teal-400 transition">
+            class=" z-20 fixed bottom-8 right-8 px-6 py-3 bg-teal-500 text-gray-900 rounded-lg text-lg font-semibold hover:bg-teal-400 transition">
             Dashboard
         </a>
     @endauth

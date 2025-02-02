@@ -65,7 +65,7 @@
                 Développeur passionné, je crée des expériences numériques modernes et performantes.
             </p>
             <div class="mt-8 flex justify-center gap-4">
-                <a href="#about"
+                <a href="#skills"
                     class="px-6 py-3 bg-teal-500 text-gray-900 rounded-lg text-lg font-semibold hover:bg-teal-400 transition">
                     En savoir plus
                 </a>

@@ -28,6 +28,7 @@ html { scroll-behavior: smooth; }
 * {
     scrollbar-width: thin;
     scrollbar-color: #9b9d9d #34445b;
+    word-wrap: break-word;
 }
 
 h3 {
