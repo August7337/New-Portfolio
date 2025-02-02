@@ -41,6 +41,10 @@
     <style>
         /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
     </style>
+    
+    @if (env('ANALYTICS'))
+        <script defer data-domain="augustin-tarit.dev" src="http://data.fire-hosting.net/js/script.js"></script>
+    @endif
 </head>
 
 <body class="bg-gray-800 text-gray-100">
