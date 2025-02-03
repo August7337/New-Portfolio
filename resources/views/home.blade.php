@@ -159,8 +159,10 @@
         <div class="container mx-auto px-6 text-center">
             <p class="text-sm">© {{ date('Y') }} Augustin TARIT. Tous droits réservés.</p>
             <div class="mt-4 flex justify-center gap-4">
-                <a href="https://www.linkedin.com/in/augustin-tarit-30a2a5335/" class="hover:text-teal-400 transition underline underline-offset-2">LinkedIn</a>
-                <a href="https://github.com/August7337" class="hover:text-teal-400 transition underline underline-offset-2">GitHub</a>
+                <a href="https://www.linkedin.com/in/augustin-tarit-30a2a5335/"
+                    class="hover:text-teal-400 transition underline underline-offset-2">LinkedIn</a>
+                <a href="https://github.com/August7337"
+                    class="hover:text-teal-400 transition underline underline-offset-2">GitHub</a>
             </div>
         </div>
     </footer>
