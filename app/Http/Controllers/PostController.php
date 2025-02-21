@@ -32,12 +32,9 @@ class PostController extends Controller
     public function store(Request $request) {
         $rules = [
             'title' => 'required|min:3',
-            'url' => 'required'
+            'url' => 'required|unique:posts,url',
+            'thumbnail' => 'required|image'
         ];
-
-        if ($request->thumbnail != "") {
-            $rules['thumbnail'] = 'image';
-        }
 
         $validator = Validator::make($request->all(), $rules);
 
@@ -116,7 +113,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $rules = [
             'title' => 'required|min:3',
-            'url' => 'required'
+            'url' => 'required|unique:posts,url,' . $id
         ];
 
         if ($request->thumbnail != "") {

@@ -43,6 +43,10 @@
     <style>
         /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
     </style>
+
+    @if (env('ANALYTICS'))
+        <script defer data-domain="augustin-tarit.dev" src="http://data.fire-hosting.net/js/script.js"></script>
+    @endif
 </head>
 
 <body class="bg-gray-900 text-gray-100">
@@ -65,7 +69,7 @@
                 Développeur passionné, je crée des expériences numériques modernes et performantes.
             </p>
             <div class="mt-8 flex justify-center gap-4">
-                <a href="#about"
+                <a href="#skills"
                     class="px-6 py-3 bg-teal-500 text-gray-900 rounded-lg text-lg font-semibold hover:bg-teal-400 transition">
                     En savoir plus
                 </a>
@@ -155,8 +159,10 @@
         <div class="container mx-auto px-6 text-center">
             <p class="text-sm">© {{ date('Y') }} Augustin TARIT. Tous droits réservés.</p>
             <div class="mt-4 flex justify-center gap-4">
-                <a href="https://www.linkedin.com/in/augustin-tarit-30a2a5335/" class="hover:text-teal-400 transition underline underline-offset-2">LinkedIn</a>
-                <a href="https://github.com/August7337" class="hover:text-teal-400 transition underline underline-offset-2">GitHub</a>
+                <a href="https://www.linkedin.com/in/augustin-tarit-30a2a5335/"
+                    class="hover:text-teal-400 transition underline underline-offset-2">LinkedIn</a>
+                <a href="https://github.com/August7337"
+                    class="hover:text-teal-400 transition underline underline-offset-2">GitHub</a>
             </div>
         </div>
     </footer>
