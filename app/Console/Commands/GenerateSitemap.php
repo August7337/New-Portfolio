@@ -33,14 +33,17 @@ class GenerateSitemap extends Command
     {
         $postsitmap = Sitemap::create();
 
+        $postsitmap->add(
+            Url::create('/')
+        );
+
         Post::get()->each(function (Post $post) use ($postsitmap) {
             $postsitmap->add(
                 Url::create("/post/{$post->url}")
-                    ->setPriority(0.9)
-                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
             );
         });
 
         $postsitmap->writeToFile(public_path('sitemap.xml'));
+        $this->info('Sitemap Generated Successfully');
     }
 }
