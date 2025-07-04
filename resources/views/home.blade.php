@@ -134,7 +134,7 @@
                     @if ($posts->isNotEmpty())
                         @foreach ($posts as $post)
                             <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden border border-gray-600/50">
-                                <img src="/uploads/img/thumbnail/little/{{ $post->thumbnail }}"
+                                <img src="/uploads/img/thumbnail/{{ $post->thumbnail }}"
                                     alt="{{ $post->title }} thumbnail" class="w-full h-48 object-cover">
                                 <div class="p-6">
                                     <h3 class="text-xl font-semibold text-gray-100">{{ $post->title }}</h3>
