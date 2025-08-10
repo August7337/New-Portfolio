@@ -101,7 +101,7 @@
                     </div>
                     <!-- NodeJS -->
                     <div class="flex flex-col items-center text-center">
-                        <img src="https://static-00.iconduck.com/assets.00/node-js-icon-1817x2048-g8tzf91e.png"
+                        <img src="https://images.seeklogo.com/logo-png/27/2/node-js-logo-png_seeklogo-273749.png"
                             alt="NodeJS Logo" class="h-16 mb-4">
                         <p class="text-gray-100 font-semibold">NodeJS</p>
                     </div>
