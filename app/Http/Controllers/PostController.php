@@ -14,7 +14,9 @@ class PostController extends Controller
 {
     // This method will show posts page
     public function index() {
-        $posts = Post::orderBy('created_at', 'DESC')->get();
+        $posts = Post::where('draft', 0)
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
         return view('home', [
             'posts' => $posts
@@ -62,6 +64,7 @@ class PostController extends Controller
         $post->date = $request->date;
         $post->html = $request->input('editor');
         $post->url = $request->url;
+        $post->draft = $request->has('isDraft');
 
         $lastPost = Post::max('id');
         $post->html = preg_replace(
@@ -82,7 +85,7 @@ class PostController extends Controller
             $resized_thumbnail = $manager->read($request->file('thumbnail'));
             $resized_thumbnail->scaleDown(width: 720)->save(public_path('uploads/img/thumbnail/'.$thumbnailName));
             $resized_thumbnail->cover(500, 500)->save(public_path('uploads/img/thumbnail/little/'.$thumbnailName));
-            
+
             // Save thumbnail name in the db
             $post->thumbnail = $thumbnailName;
         }
@@ -92,7 +95,7 @@ class PostController extends Controller
         if (!File::exists('uploads/img/' . $post->id)) {
             File::makeDirectory(public_path('uploads/img/') . $post->id);
         }
-    
+
         // search if an image isn't used, and delete it
         $imagePaths = $this->extractImagePaths($post->html);
         $this->cleanUpImages($imagePaths, $post->id);
@@ -131,6 +134,7 @@ class PostController extends Controller
         $post->date = $request->date;
         $post->html = $request->input('editor');
         $post->url = $request->url;
+        $post->draft = $request->has('isDraft');
 
         // if an img is upload :
         if ($request->thumbnail != "") {
@@ -207,7 +211,7 @@ class PostController extends Controller
         libxml_use_internal_errors(true);
         $dom->loadHTML($postHtml);
         libxml_clear_errors();
-        
+
         $images = $dom->getElementsByTagName('img');
         $imagePaths = [];
 

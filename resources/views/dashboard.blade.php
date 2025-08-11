@@ -90,6 +90,11 @@
                             @enderror
                         </div>
 
+                        <div class="mt-4">
+                            <label for="isDraft">Is Draft ?</label>
+                            <input class="ml-2" type="checkbox" name="isDraft">
+                        </div>
+
                         <button class="rounded-lg bg-slate-900 w-full h-12 text-white mb-20 mt-8">Submit</button>
 
                     </form>
@@ -137,7 +142,7 @@
                                                 @endif
                                             </td>
                                             <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                                {{ $post->title }}
+                                                {{ $post->title }} @if( $post->draft == true) <i class="opacity-50"> (draft)</i> @endif
                                             </td>
                                             <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                                                 {{ Str::limit($post->date, 250) }}

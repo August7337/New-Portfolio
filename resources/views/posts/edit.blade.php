@@ -86,6 +86,11 @@
                             @enderror
                         </div>
 
+                        <div class="mt-4">
+                            <label for="isDraft">Is Draft ?</label>
+                            <input class="ml-2" type="checkbox" name="isDraft" @checked(old('draft', $post->draft))>
+                        </div>
+
                         <button class="rounded-lg bg-slate-900 w-full h-12 text-white mb-20 mt-8">Update</button>
 
                     </form>
