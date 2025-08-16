@@ -163,6 +163,8 @@
                     class="hover:text-teal-400 transition underline underline-offset-2">LinkedIn</a>
                 <a href="https://github.com/August7337"
                     class="hover:text-teal-400 transition underline underline-offset-2">GitHub</a>
+                <a href="https://fr.fiverr.com/august7337"
+                    class="hover:text-teal-400 transition underline underline-offset-2">Fiverr</a>
             </div>
         </div>
     </footer>

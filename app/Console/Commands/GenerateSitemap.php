@@ -22,7 +22,7 @@ class GenerateSitemap extends Command
      *
      * @var string
      */
-    protected $description = 'Automatically Generate an XML Sitemap';
+    protected $description = 'Generating an XML Sitemap';
 
     /**
      * Execute the console command.
@@ -33,17 +33,21 @@ class GenerateSitemap extends Command
     {
         $postsitmap = Sitemap::create();
 
+        $this->info("adding root...");
         $postsitmap->add(
             Url::create('/')
         );
 
         Post::get()->each(function (Post $post) use ($postsitmap) {
+            if ($post->draft == true)
+                return;
+            $this->info("adding '/post/{$post->url}'...");
             $postsitmap->add(
                 Url::create("/post/{$post->url}")
             );
         });
 
         $postsitmap->writeToFile(public_path('sitemap.xml'));
-        $this->info('Sitemap Generated Successfully');
+        $this->info("\nSitemap Generated Successfully");
     }
 }
