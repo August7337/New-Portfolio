@@ -18,7 +18,7 @@ class PostController extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
 
-        return view('home', [
+        return view('test', [
             'posts' => $posts
         ]);
     }
