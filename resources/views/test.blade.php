@@ -82,6 +82,33 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init({
+              publicKey: "a3oV_QfmcincXd18n",
+            });
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const returnTxt = document.getElementById('formMsg');
+                returnTxt.innerHTML = "Sending...";
+                emailjs.sendForm('service_71dkuml', 'template_gu2y17q', this)
+                    .then(() => {
+                        console.log('SUCCESS!');
+                        returnTxt.innerHTML = "Message sent successfully!";
+                        this.reset();
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                        returnTxt.innerHTML = "An error occurred, please try again.";
+                    });
+            });
+        }
+    </script>
 </head>
 
 <body class="scroll-smooth">
@@ -342,7 +369,7 @@
             </section>
 
             <!-- CONTACT -->
-            <section id="contact" class="bg-[#10141B] text-center px-8 pb-20 pt-10">
+           <section id="contact" class="bg-[#10141B] text-center px-8 pb-20 pt-10">
                 <h3 class="text-3xl font-bold mb-6 text-white">Contact</h3>
                 <p class="text-gray-300 mb-8">Want to collaborate or learn more? Feel free to write to me.</p>
                 <div class="box-hover w-fit mx-auto">
@@ -350,6 +377,30 @@
                         class="bg-blue-500 hover:bg-blue-600 transition text-white px-6 py-3 rounded-lg font-medium">
                         <i class="fa-solid fa-paper-plane mr-2"></i>Contact me
                     </a>
+                </div>
+                <div class="max-w-4xl mx-auto mt-12">    
+                    <form id="contact-form" class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 text-left">
+                        <label class="block text-gray-300">
+                            Name
+                            <input name="name" required class="mt-2 w-full bg-transparent border border-gray-700 rounded px-3 py-2 text-white" />
+                        </label>
+                        <label class="block text-gray-300 mt-4">
+                            Email
+                            <input name="email" type="email" required class="mt-2 w-full bg-transparent border border-gray-700 rounded px-3 py-2 text-white" />
+                        </label>
+                        <label class="block text-gray-300 mt-4">
+                            Title
+                            <input name="title" required class="mt-2 w-full bg-transparent border border-gray-700 rounded px-3 py-2 text-white" />
+                        </label>
+                        <label class="block text-gray-300 mt-4">
+                            Message
+                            <textarea name="message" rows="5" required class="mt-2 w-full bg-transparent border border-gray-700 rounded px-3 py-2 text-white"></textarea>
+                        </label>
+                        <div class="mt-4 flex justify-end">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg">Send</button>
+                        </div>
+                        <p id="formMsg" class="text-sm mt-1"></p>
+                    </form>
                 </div>
             </section>
 
