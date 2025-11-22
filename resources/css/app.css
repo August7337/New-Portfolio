@@ -29,3 +29,65 @@ html { scroll-behavior: smooth; }
     scrollbar-width: thin;
     scrollbar-color: #9b9d9d #34445b;
 }
+
+
+
+body {
+    background-color: #0D1116;
+    color: #E5E7EB;
+    font-family: 'Inter', sans-serif;
+}
+.accent {
+    color: #3B82F6;
+}
+
+.grille {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.glass {
+    position: relative;
+    background: hsla(0, 0%, 100%, .04);
+    backdrop-filter: blur(20px) saturate(110%) brightness(1.05);
+    -webkit-backdrop-filter: blur(20px) saturate(110%) brightness(1.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .1), 0 2px 8px rgba(0, 0, 0, .05), inset 0 0 0 1px hsla(0, 0%, 100%, .1);
+    border-radius: 15px;
+    isolation: isolate;
+}
+.glass:before {
+    background: linear-gradient(135deg, hsla(0, 0%, 100%, .15), hsla(0, 0%, 100%, .05) 20%, transparent 40%, transparent 60%, hsla(0, 0%, 100%, .03) 80%, hsla(0, 0%, 100%, .08));
+    opacity: .3;
+}
+
+.glass:after,
+.glass:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    mix-blend-mode: overlay
+}
+
+.glass:after {
+    background: radial-gradient(circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%), hsla(0, 0%, 100%, .13) 0, hsla(0, 0%, 100%, .06) 30%, transparent 70%);
+    opacity: 0;
+    transition: opacity .5s cubic-bezier(.4, 0, .2, 1);
+}
+
+.glass:hover:after {
+    opacity: 1
+}
+
+.active {
+    background-color: rgb(37 99 235);
+    border-radius: 50px;
+}
