@@ -91,3 +91,7 @@ body {
     background-color: rgb(37 99 235);
     border-radius: 50px;
 }
+
+img.emoji {
+    width: 24px;
+}
