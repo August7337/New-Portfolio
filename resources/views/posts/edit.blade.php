@@ -91,6 +91,16 @@
                             <input class="ml-2" type="checkbox" name="isDraft" @checked(old('draft', $post->draft))>
                         </div>
 
+                        <label class="mt-4">Tags</label>
+                        <div class="flex flex-wrap gap-2 mt-2 mb-4">
+                            @foreach ($tags as $tag)
+                                <div>
+                                    <input type="checkbox" name="tags[]" value="{{ $tag->id }}" id="tag-{{ $tag->id }}" @checked(in_array($tag->id, old('tags', $post->tags->pluck('id')->toArray())))>
+                                    <label for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+
                         <button class="rounded-lg bg-slate-900 w-full h-12 text-white mb-20 mt-8">Update</button>
 
                     </form>

@@ -342,7 +342,13 @@
                                         alt="{{ $post->title }} thumbnail" class="w-full h-48 object-cover">
                                     <div class="p-6 text-left">
                                         <h4 class="text-2xl font-semibold mb-2 text-white">{{ $post->title }}</h4>
-                                        <p class="text-gray-400 mb-4">{{ $post->date }}</p>
+                                        <p class="text-gray-400">{{ $post->date }}</p>
+                                        <p class=" my-4">
+                                            @foreach ($post->tags as $tag)
+                                                <span
+                                                    class="inline-block bg-blue-500/50 text-white/75 text-xs px-2 py-1 rounded-full mr-2 mb-2 border border-white/10 font-thin">{{ $tag->name }}</span>
+                                            @endforeach
+                                        </p>
                                         <a href="/posts/{{ $post->url }}"
                                             class="bg-blue-500 hover:bg-blue-600 transition text-white px-4 py-2 rounded-lg">See
                                             the project</a>

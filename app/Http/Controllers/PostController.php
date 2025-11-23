@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Post;
+use App\Models\Tag;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use DOMDocument;
@@ -91,6 +92,8 @@ class PostController extends Controller
         }
         $post->save();
 
+        $post->tags()->sync($request->input('tags', []));
+
         // Create a folder where will be store the article images
         if (!File::exists('uploads/img/' . $post->id)) {
             File::makeDirectory(public_path('uploads/img/') . $post->id);
@@ -106,8 +109,10 @@ class PostController extends Controller
     // This method will shwo edit post page
     public function edit($id) {
         $post = Post::findOrFail($id);
+        $tags = Tag::all();
         return view('posts.edit', [
-            'post' => $post
+            'post' => $post,
+            'tags' => $tags
         ]);
     }
 
@@ -156,6 +161,8 @@ class PostController extends Controller
             $post->thumbnail = $thumbnailName;
         }
         $post->save();
+
+        $post->tags()->sync($request->input('tags', []));
 
         $lastPost = Post::max('id');
         $post->html = preg_replace(

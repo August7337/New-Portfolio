@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\EditorController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
@@ -10,14 +11,12 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     $posts = Post::orderBy('created_at', 'DESC')->get();
+    $tags = \App\Models\Tag::orderBy('name', 'ASC')->get();
     return view('dashboard', [
-        'posts' => $posts
+        'posts' => $posts,
+        'tags' => $tags
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/test', function () {
-    return view('test');
-});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -29,6 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+    Route::post('/tags', [TagController::class, 'store'])->name('tags.store');
+    Route::put('/tags/{post}', [TagController::class, 'update'])->name('tags.update');
+    Route::delete('/tags/{post}', [TagController::class, 'destroy'])->name('tags.destroy');
 });
 
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
