@@ -62,7 +62,7 @@ figcaption {
     padding: 7px;
 }
 
-section a {
+a {
     color: #14b8a6;
     text-decoration: underline;
     text-underline-offset: 2px;

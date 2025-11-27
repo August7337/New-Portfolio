@@ -80,3 +80,37 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', function() {
     twemoji.parse(document.body);
 });
+
+// Project Tag Filtering
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = Array.from(document.querySelectorAll(".tag-btn"));
+    const cards = Array.from(document.querySelectorAll(".project-card"));
+
+    const allBtn = buttons.find(b => b.dataset.tag === "all");
+    if (allBtn) {
+        buttons.forEach(b => b.classList.remove("bg-blue-500", "text-white"));
+        allBtn.classList.add("bg-blue-500", "text-white");
+    }
+
+    const normalize = (s) => (s ?? "").toString().trim().toLowerCase();
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const selectedTag = normalize(button.dataset.tag);
+
+            cards.forEach(card => {
+                const raw = card.dataset.tags ?? "";
+                const cardTags = raw.split(" ").map(t => normalize(t)).filter(Boolean);
+
+                if (selectedTag === "all" || cardTags.includes(selectedTag)) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            buttons.forEach(btn => btn.classList.remove("bg-blue-300/50", "text-white"));
+            button.classList.add("bg-blue-300/50", "text-white");
+        });
+    });
+});

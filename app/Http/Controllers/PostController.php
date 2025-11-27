@@ -18,9 +18,11 @@ class PostController extends Controller
         $posts = Post::where('draft', 0)
             ->orderBy('created_at', 'DESC')
             ->get();
+        $tags = Tag::orderBy('name', 'ASC')->get();
 
         return view('test', [
-            'posts' => $posts
+            'posts' => $posts,
+            'tags' => $tags
         ]);
     }
 

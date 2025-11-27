@@ -235,7 +235,7 @@
                     </div>
 
                     <div class="grid sm:grid-cols-2 md:grid-cols-2 gap-8 text-gray-300 mt-12">
-                        <div data-aos="fade-right" class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                        <div data-aos="fade-right" class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="font-semibold text-white mb-3"><i class="fa-solid fa-user-check mr-2 accent"></i>Soft
                                 Skills</h4>
                             <p class="text-gray-300 leading-relaxed">
@@ -245,12 +245,12 @@
                             </p>
                         </div>
 
-                        <div data-aos="fade-left" class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                        <div data-aos="fade-left" class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="font-semibold text-white mb-3"><i
                                     class="fa-solid fa-language mr-2 accent"></i>Languages</h4>
-                            <p class="flex">French <span class=" mx-3 h-6 mb-2">🇫🇷</span> — Native</p>
-                            <p class="flex">English <span class=" mx-3 h-6 mb-2">🇬🇧</span> — B1</p>
-                            <p class="flex">Chinese <span class=" mx-3 h-6">🇨🇳</span> — A0</p>
+                            <p class="flex justify-center">French <span class=" mx-3 h-6 mb-2">🇫🇷</span> — Native</p>
+                            <p class="flex justify-center">English <span class=" mx-3 h-6 mb-2">🇬🇧</span> — B1</p>
+                            <p class="flex justify-center">Chinese <span class=" mx-3 h-6">🇨🇳</span> — A0</p>
                         </div>
                     </div>
                 </div>
@@ -261,13 +261,13 @@
                 <div class="max-w-6xl mx-auto text-center">
                     <h3 class="text-3xl font-bold mb-10 text-white">Education</h3>
                     <div class="space-y-10">
-                        <div data-aos="fade-up" class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                        <div data-aos="fade-up" class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="text-xl font-semibold text-white">2024 – 2027 (in progress)</h4>
                             <p class="text-sm text-gray-400 mb-2">Bachelor of Computer Science</p>
                             <p class="text-gray-300">IUT d’Annecy – Annecy-le-Vieux, France</p>
                             <p class="text-gray-400">2nd year in progress</p>
                         </div>
-                        <div data-aos="fade-up" class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                        <div data-aos="fade-up" class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="text-xl font-semibold text-white">2024</h4>
                             <p class="text-sm text-gray-400 mb-2">High School Diploma (Sciences and Technologies of
                                 Industry and Sustainable Development)</p>
@@ -284,7 +284,7 @@
 
                     <div class="space-y-10">
                         <div data-aos="fade-right"
-                            class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                            class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="text-xl font-semibold text-white">Logistics Agent</h4>
                             <p class="text-sm text-gray-400 mb-2">Aug. 2025 - Oct. 2025 – Interim Missions at Mondial
                                 Relay</p>
@@ -293,7 +293,7 @@
                         </div>
 
                         <div data-aos="fade-left"
-                            class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                            class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="text-xl font-semibold text-white">Street Maintenance Agent</h4>
                             <p class="text-sm text-gray-400 mb-2">July 2025 – Aug. 2025 – City of La Motte-Servolex</p>
                             <p class="text-gray-300">Worked in a team to ensure the cleanliness and safety of the city.
@@ -301,7 +301,7 @@
                         </div>
 
                         <div data-aos="fade-left"
-                            class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                            class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="text-xl font-semibold text-white">Freelance Fiverr</h4>
                             <p class="text-sm text-gray-400 mb-2">March 2025 – July 2025</p>
                             <p class="text-gray-300">Completed three freelance missions, including Linux server
@@ -309,7 +309,7 @@
                         </div>
 
                         <div data-aos="fade-right"
-                            class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                            class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="text-xl font-semibold text-white">Web Development Intern</h4>
                             <p class="text-sm text-gray-400 mb-2">Feb. 2024 – DATASOLUTION, Chambéry</p>
                             <p class="text-gray-300">Developed a web application in native PHP and managed interactions
@@ -317,7 +317,7 @@
                         </div>
 
                         <div data-aos="fade-left"
-                            class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                            class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="text-xl font-semibold text-white">Web Design & Development Intern</h4>
                             <p class="text-sm text-gray-400 mb-2">June 2022 – DATASOLUTION, Chambéry</p>
                             <p class="text-gray-300">Created static HTML/CSS pages and assisted in graphic design for
@@ -331,15 +331,27 @@
             <section id="projects" class="px-8 py-20 bg-[#0D1116] h-screen" style="width: 200vw;">
                 <div class="max-w-6xl mx-auto">
                     <h3 class="text-3xl font-bold mb-10 text-white">Projects</h3>
-
-                    <div class="flex w-fit">
-
+                    <div>
+                        <span data-tag="all"
+                            class="tag-btn inline-block cursor-pointer bg-blue-300/50 bg-blue-500/50 text-white/75 text-sm px-3 py-2 rounded-full mr-2 mb-2 border border-white/10 font-thin hover:bg-blue-500 hover:text-white transition">
+                            All
+                        </span>
+                    
+                        @foreach ($tags as $tag)
+                            <span data-tag="{{ Str::of($tag->name)->lower()->slug('-') }}"
+                                  class="tag-btn inline-block cursor-pointer bg-blue-500/50 text-white/75 text-sm px-3 py-2 rounded-full mr-2 mb-2 border border-white/10 font-thin hover:bg-blue-500 hover:text-white transition">
+                                {{ $tag->name }}
+                            </span>
+                        @endforeach
+                    </div>
+                
+                    <div class="flex w-fit mt-8">
                         @if ($posts->isNotEmpty())
                             @foreach ($posts as $post)
-                                <div
-                                    class="bg-[#1A1F27] rounded-2xl overflow-hidden border border-gray-800 box-hover mr-10 w-96">
+                                <div class="project-card bg-[#1A1F27] rounded-2xl overflow-hidden border border-gray-800 box-hover mr-10 w-96"
+                                     data-tags="{{ $post->tags->map(fn($t)=> Str::of($t->name)->lower()->slug('-'))->implode(' ') }}">
                                     <img src="/uploads/img/thumbnail/{{ $post->thumbnail }}"
-                                        alt="{{ $post->title }} thumbnail" class="w-full h-48 object-cover">
+                                         alt="{{ $post->title }} thumbnail" class="w-full h-48 object-cover">
                                     <div class="p-6 text-left">
                                         <h4 class="text-2xl font-semibold mb-2 text-white">{{ $post->title }}</h4>
                                         <p class="text-gray-400">{{ $post->date }}</p>
@@ -350,7 +362,7 @@
                                             @endforeach
                                         </p>
                                         <a href="/posts/{{ $post->url }}"
-                                            class="bg-blue-500 hover:bg-blue-600 transition text-white px-4 py-2 rounded-lg">See
+                                           class="bg-blue-500 hover:bg-blue-600 transition text-white px-4 py-2 rounded-lg">See
                                             the project</a>
                                     </div>
                                 </div>
@@ -358,7 +370,7 @@
                         @else
                             <p class="text-gray-400">No projects available at the moment.</p>
                         @endif
-
+                            
                     </div>
                 </div>
             </section>
@@ -370,7 +382,7 @@
                     <hr class="border-gray-700 mb-10">
                     <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 text-gray-300">
                         <!-- Reference 1 -->
-                        <div class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                        <div class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="text-xl font-semibold text-white mb-3">Stephanie Vibrac</h4>
                             <p class="text-sm text-gray-400 mb-2">English Professor and International Coordinator at
                                 the International Office</p>
@@ -380,7 +392,7 @@
                                     class="text-blue-400 hover:underline">stephanie.vibrac@univ-smb.fr</a></p>
                         </div>
                         <!-- Reference 2 -->
-                        <div class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 box-hover">
+                        <div class="bg-[#1A1F27] p-6 rounded-xl border border-gray-800 fast-box-hover">
                             <h4 class="text-xl font-semibold text-white mb-3">Benoit Diard</h4>
                             <p class="text-sm text-gray-400 mb-2">IT Professor</p>
                             <p class="text-gray-300 mb-2">Place: Université Savoie Mont Blanc / IUT d’Annecy –
@@ -469,6 +481,21 @@
                 scale: 1
             });
         });
+
+        hover(".fast-box-hover", (element) => {
+            animate(element, {
+                scale: 1.1
+            }, {
+                duration: 0.05
+            });
+        
+            return () => animate(element, {
+                scale: 1
+            }, {
+                duration: 0.05
+            });
+        });
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
