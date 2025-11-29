@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $post->title }} - Augustin Tarit</title>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite('resources/css/posts.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -49,18 +48,29 @@
                 <section class="max-w-5xl mx-auto text-center">
                     <h1 class="text-5xl md:text-7xl font-extrabold text-blue-500 mb-4">{{ $post->title }}</h1>
                     <h2 class="text-2xl md:text-4xl font-bold text-gray-100 mb-8">{{ $post->date }}</h2>
-                    <img class="max-h-96 h-full mx-auto mb-12" src="{{ asset('uploads/img/thumbnail/' . $post->thumbnail) }}" alt="{{ $post->title }}">
+                    <img class="max-h-96 h-full mx-auto mb-8"
+                        src="{{ asset('uploads/img/thumbnail/' . $post->thumbnail) }}" alt="{{ $post->title }}">
+                    <div class=" mb-12">
+                        @foreach ($post->tags as $tag)
+                            <span
+                                class="tag-btn inline-block bg-blue-500/50 text-white/75 text-sm px-3 py-2 rounded-full mr-2 mb-2 border border-white/10 font-thin transition">
+                                {{ $tag->name }}
+                            </span>
+                        @endforeach
+                    </div>
                     <div class="text-gray-300 leading-relaxed text-left">
                         {!! $post->html !!}
                     </div>
                 </section>
 
                 <div class="mt-12 flex justify-center gap-4">
-                    <a href="/" class="px-6 py-3 bg-blue-500 text-white rounded-lg text-lg font-semibold hover:bg-blue-600 transition">
+                    <a href="/"
+                        class="px-6 py-3 bg-blue-500 text-white rounded-lg text-lg font-semibold hover:bg-blue-600 transition">
                         Back to Home
                     </a>
                     @auth
-                        <a href="/posts/{{ $post->id }}/edit" class="px-6 py-3 bg-gray-800 text-gray-100 border border-gray-600 rounded-lg text-lg font-semibold hover:bg-gray-700 transition">
+                        <a href="/posts/{{ $post->id }}/edit"
+                            class="px-6 py-3 bg-gray-800 text-gray-100 border border-gray-600 rounded-lg text-lg font-semibold hover:bg-gray-700 transition">
                             Edit Post
                         </a>
                     @endauth
@@ -72,7 +82,8 @@
         <footer class="bg-[#0D1116] text-center text-gray-500 py-6 border-t border-gray-800">
             <p>© {{ date('Y') }} Augustin Tarit — All rights reserved.</p>
             <div class="mt-4 flex justify-center gap-4">
-                <a href="https://www.linkedin.com/in/augustin-tarit/" class="hover:text-blue-400 transition">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/augustin-tarit/"
+                    class="hover:text-blue-400 transition">LinkedIn</a>
                 <a href="https://github.com/August7337" class="hover:text-blue-400 transition">GitHub</a>
             </div>
         </footer>

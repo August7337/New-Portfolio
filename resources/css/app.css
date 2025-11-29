@@ -30,13 +30,12 @@ html { scroll-behavior: smooth; }
     scrollbar-color: #9b9d9d #34445b;
 }
 
-
-
 body {
     background-color: #0D1116;
     color: #E5E7EB;
     font-family: 'Inter', sans-serif;
 }
+
 .accent {
     color: #3B82F6;
 }

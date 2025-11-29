@@ -20,7 +20,7 @@ class PostController extends Controller
             ->get();
         $tags = Tag::orderBy('name', 'ASC')->get();
 
-        return view('test', [
+        return view('home', [
             'posts' => $posts,
             'tags' => $tags
         ]);
