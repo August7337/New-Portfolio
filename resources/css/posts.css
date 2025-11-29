@@ -58,7 +58,7 @@ figure {
 }
 
 figcaption {
-    background-color: theme('colors.base-300');
+    background-color: #2a374f;
     padding: 7px;
 }
 
