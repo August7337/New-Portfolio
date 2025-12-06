@@ -27,6 +27,10 @@
     <meta name="twitter:description" content="An article about: {{ $post->title }} written by Augustin Tarit.">
     <meta name="twitter:image" content="{{ asset('uploads/img/thumbnail/' . $post->thumbnail) }}">
 
+    @if (env('ANALYTICS'))
+        <script defer data-domain="augustin-tarit.dev" src="http://data.fire-hosting.net/js/script.js"></script>
+    @endif
+
     <style>
         body {
             background-color: #0D1116;

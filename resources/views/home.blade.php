@@ -79,6 +79,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    @if (env('ANALYTICS'))
+        <script defer data-domain="augustin-tarit.dev" src="http://data.fire-hosting.net/js/script.js"></script>
+    @endif
+
     <script defer src="https://cdn.jsdelivr.net/npm/@twemoji/api/dist/twemoji.min.js" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
